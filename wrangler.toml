@@ -1,0 +1,6 @@
+name = "coinflip"
+compatibility_date = "2025-11-22"
+pages_build_output_dir = "dist"
+
+[env.production]
+name = "coinflip"

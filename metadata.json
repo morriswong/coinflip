@@ -1,0 +1,5 @@
+{
+  "name": "CoinFlip",
+  "description": "A premium 3D Coin Flip PWA with AI-powered fortune telling capabilities.",
+  "requestFramePermissions": []
+}
