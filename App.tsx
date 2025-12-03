@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Coin3D } from './components/Coin3D';
+import { CurrencySelector } from './components/CurrencySelector';
 import { CoinSide, HistoryItem } from './types';
+import { CURRENCIES, DEFAULT_CURRENCY_ID } from './constants';
 import { v4 as uuidv4 } from 'uuid'; // Assuming environment has uuid, if not we use simple math random for IDs
 
 const App: React.FC = () => {
@@ -9,6 +11,8 @@ const App: React.FC = () => {
     const [isFlipping, setIsFlipping] = useState(false);
     const [history, setHistory] = useState<HistoryItem[]>([]);
     const [showHistory, setShowHistory] = useState(false);
+    const [selectedCurrencyId, setSelectedCurrencyId] = useState<string>(DEFAULT_CURRENCY_ID);
+    const selectedCurrency = CURRENCIES.find(c => c.id === selectedCurrencyId) || CURRENCIES[0];
 
     // Helper to trigger vibration
     const triggerHaptic = () => {
@@ -40,6 +44,7 @@ const App: React.FC = () => {
                 id: Date.now().toString(), // Simple ID
                 side: newSide,
                 timestamp: Date.now(),
+                currencyId: selectedCurrencyId,
             };
 
             setHistory(prev => [newItem, ...prev]);
@@ -51,13 +56,14 @@ const App: React.FC = () => {
         <div className="min-h-screen bg-slate-900 text-white flex flex-col overflow-hidden relative">
 
             {/* Header */}
-            <header className="p-6 flex justify-between items-center z-10">
+            <header className="p-6 flex justify-between items-center relative z-10">
                 <div>
                     <h1 className="text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-700">
                         CoinFlip
                     </h1>
                     <p className="text-xs text-slate-400">PWA Edition</p>
                 </div>
+
                 <button
                     onClick={() => setShowHistory(!showHistory)}
                     className="p-2 rounded-full bg-slate-800/50 backdrop-blur hover:bg-slate-700 transition-colors"
@@ -69,6 +75,16 @@ const App: React.FC = () => {
                 </button>
             </header>
 
+            {/* Currency Selector - Full Width Tabs */}
+            <section className="relative z-10 border-b border-slate-800/50">
+                <CurrencySelector
+                    currencies={CURRENCIES}
+                    selectedCurrencyId={selectedCurrencyId}
+                    onSelectCurrency={setSelectedCurrencyId}
+                    disabled={isFlipping}
+                />
+            </section>
+
             {/* Main Content */}
             <main className="flex-1 flex flex-col items-center justify-center relative z-0 pb-20">
 
@@ -78,6 +94,7 @@ const App: React.FC = () => {
                         result={result}
                         isFlipping={isFlipping}
                         onFlipStart={handleFlip}
+                        currency={selectedCurrency}
                     />
                 </div>
 
@@ -121,6 +138,11 @@ const App: React.FC = () => {
                                         <span className={`font-bold ${item.side === CoinSide.HEADS ? 'text-gold-400' : 'text-slate-300'}`}>
                                             {item.side}
                                         </span>
+                                        {item.currencyId && (
+                                            <span className="text-xs text-slate-500">
+                                                ({CURRENCIES.find(c => c.id === item.currencyId)?.displayName || 'Unknown'})
+                                            </span>
+                                        )}
                                         <span className="text-xs text-slate-500">
                                             {new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                         </span>

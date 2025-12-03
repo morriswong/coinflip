@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <radialGradient id="goldGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fdd835"/>
+      <stop offset="50%" stop-color="#fbc02d"/>
+      <stop offset="100%" stop-color="#f57f17"/>
+    </radialGradient>
+    <radialGradient id="goldShine" cx="30%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Main coin body -->
+  <circle cx="512" cy="512" r="480" fill="url(#goldGradient)" stroke="#f57f17" stroke-width="8"/>
+
+  <!-- Inner decorative circle -->
+  <circle cx="512" cy="512" r="440" fill="none" stroke="#d4af37" stroke-width="3"/>
+
+  <!-- Decorative dots around border -->
+  <g stroke="#f57f17" stroke-width="2">
+    <circle cx="512" cy="60" r="3" fill="#f57f17"/>
+    <circle cx="870" cy="160" r="3" fill="#f57f17"/>
+    <circle cx="964" cy="512" r="3" fill="#f57f17"/>
+    <circle cx="870" cy="864" r="3" fill="#f57f17"/>
+    <circle cx="512" cy="964" r="3" fill="#f57f17"/>
+    <circle cx="154" cy="864" r="3" fill="#f57f17"/>
+    <circle cx="60" cy="512" r="3" fill="#f57f17"/>
+    <circle cx="154" cy="160" r="3" fill="#f57f17"/>
+  </g>
+
+  <!-- Shine overlay -->
+  <circle cx="512" cy="512" r="480" fill="url(#goldShine)"/>
+
+  <!-- Central crown design -->
+  <g transform="translate(512, 380)">
+    <!-- Crown base -->
+    <rect x="-100" y="40" width="200" height="60" rx="8" fill="#d4af37" stroke="#f57f17" stroke-width="2"/>
+
+    <!-- Crown peaks -->
+    <path d="M -80 40 L -80 -40 L -40 0 L -40 40" fill="#f57f17" stroke="#d4af37" stroke-width="2"/>
+    <path d="M 0 40 L 0 -60 L 40 -20 L 40 40" fill="#fdd835" stroke="#f57f17" stroke-width="2"/>
+    <path d="M 40 40 L 80 -40 L 120 40" fill="#f57f17" stroke="#d4af37" stroke-width="2"/>
+  </g>
+
+  <!-- Text arc -->
+  <defs>
+    <path id="topArc" d="M 250,512 A 262,262 0 0,1 774,512" fill="none"/>
+  </defs>
+  <text font-size="36" font-weight="bold" fill="#d4af37" letter-spacing="6">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">
+      BRITISH PENNY
+    </textPath>
+  </text>
+
+  <!-- Bottom decoration arc -->
+  <path d="M 300 780 Q 512 850 724 780" stroke="#d4af37" stroke-width="2" fill="none" stroke-dasharray="8 4"/>
+</svg>

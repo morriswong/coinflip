@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <radialGradient id="silverGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e8e8e8"/>
+      <stop offset="50%" stop-color="#c0c0c0"/>
+      <stop offset="100%" stop-color="#808080"/>
+    </radialGradient>
+    <radialGradient id="silverShine" cx="30%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Main coin body -->
+  <circle cx="512" cy="512" r="480" fill="url(#silverGradient)" stroke="#666666" stroke-width="8"/>
+
+  <!-- Inner decorative circle -->
+  <circle cx="512" cy="512" r="440" fill="none" stroke="#999999" stroke-width="3"/>
+
+  <!-- Shine overlay -->
+  <circle cx="512" cy="512" r="480" fill="url(#silverShine)"/>
+
+  <!-- Coming soon text -->
+  <text x="512" y="480" font-size="48" font-weight="bold" fill="#666666" text-anchor="middle" dominant-baseline="middle">
+    COMING SOON
+  </text>
+  <text x="512" y="560" font-size="32" fill="#888888" text-anchor="middle" dominant-baseline="middle">
+    US Quarter
+  </text>
+
+  <!-- Decorative border -->
+  <circle cx="512" cy="512" r="350" fill="none" stroke="#999999" stroke-width="2" stroke-dasharray="10 5" opacity="0.5"/>
+</svg>
