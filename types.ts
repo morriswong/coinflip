@@ -3,21 +3,10 @@ export enum CoinSide {
   TAILS = 'TAILS'
 }
 
-export interface Currency {
-  id: string;
-  name: string;
-  displayName: string;
-  headsImage: string;
-  tailsImage: string;
-  country: string;
-  denomination: string;
-}
-
 export interface HistoryItem {
   id: string;
   side: CoinSide;
   timestamp: number;
-  currencyId?: string;
   question?: string;
   aiResponse?: string;
 }
